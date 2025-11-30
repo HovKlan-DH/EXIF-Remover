@@ -86,4 +86,14 @@
     <Content Include="Icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if "$(ConfigurationName)" == "Release" (
+
+REM --------------------------------
+REM Digitally sign the application
+REM --------------------------------
+"C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64\signtool.exe" sign /fd sha256 /tr http://ts.ssl.com /td sha256 /sha1 7e2215692c12ad960e40a844b1e1bc15ca006df9 "$(TargetPath)"
+
+)</PostBuildEvent>
+  </PropertyGroup>
 </Project>

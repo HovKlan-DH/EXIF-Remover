@@ -49,7 +49,13 @@ namespace EXIF_Remover
             _invokedFromShell = _startupFiles.Length > 0;
 
             InitializeComponent();
+
             this.Text = "EXIF Remover";
+
+            linkLabel1.LinkClicked += (s, e) => {
+                try { Process.Start("https://github.com/HovKlan-DH/EXIF-Remover"); }
+                catch (Exception ex) { LogErrorEarly("OpenLink", ex); }
+            };
 
             _startupMinimized = Environment.GetCommandLineArgs()
                 .Skip(1)

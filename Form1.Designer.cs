@@ -34,11 +34,13 @@
             this.trayExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chkStartup = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.trayMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSelectFiles
             // 
+            this.btnSelectFiles.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectFiles.Location = new System.Drawing.Point(13, 13);
             this.btnSelectFiles.Margin = new System.Windows.Forms.Padding(4);
             this.btnSelectFiles.Name = "btnSelectFiles";
@@ -51,10 +53,11 @@
             // lblHint
             // 
             this.lblHint.AutoSize = true;
+            this.lblHint.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHint.Location = new System.Drawing.Point(13, 59);
             this.lblHint.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHint.Name = "lblHint";
-            this.lblHint.Size = new System.Drawing.Size(577, 16);
+            this.lblHint.Size = new System.Drawing.Size(595, 18);
             this.lblHint.TabIndex = 1;
             this.lblHint.Text = "You can also drag && drop files here, or activate it via Explorer context menu \"R" +
     "emove EXIF data\".";
@@ -110,10 +113,11 @@
             // chkStartup
             // 
             this.chkStartup.AutoSize = true;
+            this.chkStartup.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkStartup.Location = new System.Drawing.Point(239, 20);
             this.chkStartup.Margin = new System.Windows.Forms.Padding(4);
             this.chkStartup.Name = "chkStartup";
-            this.chkStartup.Size = new System.Drawing.Size(217, 20);
+            this.chkStartup.Size = new System.Drawing.Size(236, 22);
             this.chkStartup.TabIndex = 1;
             this.chkStartup.Text = "Startup minimized with Windows";
             this.chkStartup.UseVisualStyleBackColor = true;
@@ -123,11 +127,24 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(1029, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 16);
+            this.label1.Size = new System.Drawing.Size(55, 18);
             this.label1.TabIndex = 3;
             this.label1.Text = "Version";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(996, 41);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(131, 18);
+            this.linkLabel1.TabIndex = 4;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "GitHub project page";
             // 
             // Form1
             // 
@@ -135,6 +152,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1162, 532);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chkStartup);
             this.Controls.Add(this.lblHint);
@@ -156,5 +174,6 @@
         }
 
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
