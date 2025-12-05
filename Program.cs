@@ -22,7 +22,8 @@ namespace EXIF_Remover
 
             var argv = (args?.Length > 0 ? args : Environment.GetCommandLineArgs()?.Skip(1)?.ToArray())
                        ?? Array.Empty<string>();
-            var startupFiles = argv.Where(File.Exists).ToArray();
+            // Accept both files and directories from shell/context menu
+            var startupFiles = argv.Where(p => File.Exists(p) || Directory.Exists(p)).ToArray();
 
             using (var mutex = new Mutex(true, MutexName, out bool isOwner))
             {
@@ -39,12 +40,7 @@ namespace EXIF_Remover
                         if (hwnd != IntPtr.Zero)
                         {
                             SendString(hwnd, payload);
-//                            TryAppendLog($"Forwarded {startupFiles.Length} path(s) to hwnd=0x{hwnd.ToInt64():X}");
                         }
-//                        else
-//                        {
-//                            TryAppendLog($"Primary window not found. Payload count={startupFiles.Length}");
-//                        }
                     }
                     // exit immediately
                 }
