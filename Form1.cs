@@ -61,10 +61,7 @@ namespace EXIF_Remover
             _startupFiles = files ?? Array.Empty<string>();
             _invokedFromShell = _startupFiles.Length > 0;
 
-            // Clean the entire global temp root BEFORE any session backup is created
             CleanGlobalTempRoot();
-
-            // IMPORTANT: instantiate the session-scoped undo manager
             _undo = new UndoSession();
 
             InitializeComponent();
@@ -74,10 +71,29 @@ namespace EXIF_Remover
             // Ensure log mouse handlers are attached once
             AttachLogClickHandlers();
 
+            // Enable drag & drop on both the Form and the RichTextBox
+            try
+            {
+                // Form-level (kept as-is; ensure AllowDrop = true in Designer or set here)
+                this.AllowDrop = true;
+                this.DragEnter += Form1_DragEnter;
+                this.DragDrop += Form1_DragDrop;
+
+                // RichTextBox-level so child control accepts file/folder drops
+                if (richTextBox1 != null)
+                {
+                    richTextBox1.AllowDrop = true;
+                    richTextBox1.DragEnter += Form1_DragEnter;
+                    richTextBox1.DragDrop += Form1_DragDrop;
+                }
+            }
+            catch { }
+
             linkLabel1.LinkClicked += (s, e) => {
                 try { Process.Start("https://github.com/HovKlan-DH/EXIF-Remover"); }
                 catch (Exception ex) { LogErrorEarly("OpenLink", ex); }
             };
+
 
             _startupMinimized = Environment.GetCommandLineArgs()
                 .Skip(1)
